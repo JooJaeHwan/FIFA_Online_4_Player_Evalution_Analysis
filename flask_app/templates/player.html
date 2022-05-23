@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>FIFA ONLINE 4 선수추천</title>
+</head>
+<body>
+    <div class="navbar navbar-dark bg-dark">
+        <div class="container">
+        <a href="#" class="navbar-brand">
+        
+            <strong> <img src =https://ssl.nexon.com/s2/game/fo4/CBT/common/logo_fo4.png>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;FIFA ONLINE 4 선수추천</strong>
+        </a>
+        </div>
+    </div>
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">  
+            <h2 class="fw-bolder">
+            {{ player }} 선수의 평가는?
+            </h2>
+            
+        </div>
+        {% for i in range(suggestion) %}   
+            {% if evalution[i] == 4: %}
+            <h4 class="fw-bolder">{{ player }}선수의 {{ name[i] }}클래스 평가는 업데이트 예정입니다!! </h4>
+            {% elif evalution[i] == 3: %}
+            <h4 class="fw-bolder">{{ player }}선수의 {{ name[i] }}시즌은 강력추천합니다!! </h4>
+            {% elif evalution[i] == 2: %}
+            <h4 class="fw-bolder">{{ player }}선수의 {{ name[i] }}시즌은 추천합니다!! </h4>
+            {% elif evalution[i] == 1: %}
+            <h4 class="fw-bolder">{{ player }}선수의 {{ name[i] }}시즌은 긍정적으로 검토해보시면 좋을거같습니다!! </h4>
+            {% elif evalution[i] == 0: %}
+            <h4 class="fw-bolder">{{ player }}선수의 {{ name[i] }}시즌은 추천하지 않습니다 ㅠㅠ 다른 시즌을 검토해보세요!!!</h4>
+            {% endif %}
+        {% endfor %}
+        </div>
+        <div class="navbar navbar-dark bg-dark">
+            <div class="container">
+
+            <a href="#" class="navbar-brand">
+                <img src =https://ssl.nexon.com/s2/game/fo4/CBT/common/logo_fo4.png><strong>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;OPEN API NEXON 제공</strong>
+            </a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
