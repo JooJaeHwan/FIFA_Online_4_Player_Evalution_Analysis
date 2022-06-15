@@ -5,6 +5,7 @@ import pandas as pd
 import json
 import pickle
 import numpy as np
+import keras
 
 def tokenize(doc):
     # norm은 정규화, stem은 근어로 표시하기를 나타냄
@@ -38,8 +39,7 @@ with open('train_docs.json') as f:
     train_docs = json.load(f)
 with open('test_docs.json') as f:
     test_docs = json.load(f)
-with open('suggestion_model.pkl','rb') as pickle_file:
-    model = pickle.load(pickle_file)
+model = keras.models.load_model('suggestion_model.h5')
 
 okt = Okt()
 tokens = [t for d in train_docs for t in d[0]]
@@ -49,7 +49,7 @@ selected_words = [f[0] for f in text.vocab().most_common(10000)]
 df = pd.read_csv("Reviews.csv", index_col=0)
 pd.set_option('mode.chained_assignment',  None)
 
-for i in range(len(df)):
+for i in range(115472, 128630):
     predict_pos_neg(df, i , df.iloc[:,2][i])
     print(i,"번째 완료")
     df.to_csv("Modeling_Reviews.csv")
