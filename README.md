@@ -1,4 +1,5 @@
 # FIFA_Online_4_Player_Evalution_Analysis
+평소 피파온라인 4 게임을 즐겨하면서 팀을 새로 구성하고 선수를 구매할 때 피파온라인 4 인벤을 보고 유저들의 평가를 보고 추천을 받는 것을 조금 더 수월하게 추천을 얻기 위해
 피파온라인4 인벤에 선수에 대한 평가 댓글을 가져와서 해당 댓글이 긍정인지 부정인지를 판별하는 감정분석 모델 ( Update 22.06.14 )
 ## 데이터 수집 
 - [OPEN API 사용](https://developers.nexon.com/fifaonline4)
