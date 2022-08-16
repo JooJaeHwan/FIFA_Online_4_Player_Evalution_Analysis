@@ -29,16 +29,18 @@
     
             <img src=https://ifh.cc/g/b19AKs.jpg style="width:600x; height:600px;">
             <h4>
-                <strong>선수의 이름을 검색하시면 해당 선수의 각 클래스 별 댓글을 분석해 추천여부를 보여주게됩니다.</strong>
+                <strong>궁금하신 댓글을 입력해주세요!</strong>
             </h4>
             
         </p>
         <p>
             <form action="/player" method="post">
                 <p>
-                    <input type="text" id='player' name="player" placeholder="선수 이름을 입력해주세요.">
-                    <input type="submit"value="검색" />
+                    
+                    <textarea class="hidden" name="text" type="text " placeholder="여기에 입력 " style="color:rgb(100, 100, 100); width:500px; height:200px; outline:none; text-align:center;font-size:13px"></textarea>
+                    
                 </p>
+                    <input type="submit"value="보내기" />
             </form>
         </p>
                   

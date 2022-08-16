@@ -1,11 +1,16 @@
-
-import os
 from flask import Flask, render_template, request
-import pickle
 import requests
 import pandas as pd
+import pymysql
 
-
+conn = pymysql.connect(
+                        user    = 'FIFA',
+                        passwd  = 'FIFA!',
+                        host    = "3.83.154.197",
+                        port    = 3306,
+                        db      = 'FIFA',
+                        charset = 'utf8'
+        )
 
 
 app = Flask(__name__)
@@ -15,20 +20,15 @@ def index():
     
     return render_template('index.html'), 200
 
-@app.route('/player', methods=["POST"])
+@app.route('/player', methods=['GET',"POST"])
 def user():
 
-
-    value = request.form["player"]
-    player = "%s"%value
-    suggestion = pd.read_csv("/Users/jjwani/workspace/codestates/FIFA_Online_4_Player_Evalution_Analysis/Suggestion.csv", index_col=0)
-    suggestion = suggestion.loc[suggestion["name"].str.contains(player)]
-    name = suggestion.iloc[:,4]
-    name = list(name)
-    evalution = suggestion.iloc[:,3]
-    evalution = list(evalution)
-    return render_template('player.html', suggestion=len(suggestion)-1, name=name, player=player, evalution=evalution), 200
+    text = request.form.get('text')
+    res = requests.post('http://127.0.0.1:5001/result', data=text.encode('utf-8')) # 포트 포워딩 필요
+    value = res.text
+    value = value.split(",")
+    return render_template('player.html',text=text, value=float(value[1]) * 100, idx=value[0]), 200
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)

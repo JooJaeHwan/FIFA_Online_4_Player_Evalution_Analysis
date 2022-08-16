@@ -20,23 +20,24 @@
         <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">  
             <h2 class="fw-bolder">
-            {{ player }} 선수의 평가는?
+            입력한 댓글의 감정분석는?
             </h2>
             
         </div>
-        {% for i in range(suggestion) %}   
-            {% if evalution[i] == 4: %}
-            <h4 class="fw-bolder">{{ player }}선수의 {{ name[i] }}클래스 평가는 업데이트 예정입니다!! </h4>
-            {% elif evalution[i] == 3: %}
-            <h4 class="fw-bolder">{{ player }}선수의 {{ name[i] }}시즌은 강력추천합니다!! </h4>
-            {% elif evalution[i] == 2: %}
-            <h4 class="fw-bolder">{{ player }}선수의 {{ name[i] }}시즌은 추천합니다!! </h4>
-            {% elif evalution[i] == 1: %}
-            <h4 class="fw-bolder">{{ player }}선수의 {{ name[i] }}시즌은 긍정적으로 검토해보시면 좋을거같습니다!! </h4>
-            {% elif evalution[i] == 0: %}
-            <h4 class="fw-bolder">{{ player }}선수의 {{ name[i] }}시즌은 추천하지 않습니다 ㅠㅠ 다른 시즌을 검토해보세요!!!</h4>
+            {% if idx == "0" %}
+            <br><br><br><br><br><br>    
+                <h3>"{{ text }}" 은 부정일 확률은 {{ value }}% 으로 보입니다!! </p>
+            <br><br><br><br><br><br>
+            {% elif idx == "1" %}
+            <br><br><br><br><br><br>    
+                <h3>"{{ text }}" 은 긍정일 확률은 {{ value }}% 으로 보입니다!! </p>
+            <br><br><br><br><br><br>
+            {% else %}
+            <br><br><br><br><br><br>
+                <h3>"{{ text }}" 은 {{ value }}% 확률로 필요없는 댓글로 보입니다!! </p>
+            <br><br><br><br><br><br>
             {% endif %}
-        {% endfor %}
+
         </div>
         <div class="navbar navbar-dark bg-dark">
             <div class="container">
