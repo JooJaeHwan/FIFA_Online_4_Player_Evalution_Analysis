@@ -1,2 +1,3 @@
 *.pem
 *.csv
+.DS_Store
